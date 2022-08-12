@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  users_gateway:
+    build: interview-gateway
+    image: 'users_gateway:latest'
+    container_name: users_gateway
+    networks:
+      - huma_net
+    restart: unless-stopped
+    ports:
+      - '3000:80'
+  users_service:
+    build: interview-microservice
+    image: 'users_service:latest'
+    container_name: users_service
+    networks:
+      - huma_net
+    restart: unless-stopped
+    depends_on:
+      - huma_mongo
+  huma_mongo:
+    image: 'mongo:latest'
+    container_name: huma_mongo
+    volumes:
+      - 'dbdata:/db/data'
+    restart: unless-stopped
+    networks:
+      - huma_net
+
+volumes:
+  dbdata:
+
+networks:
+  huma_net:
