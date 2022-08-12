@@ -1,0 +1,6 @@
+[submodule "interview-gateway"]
+	path = interview-gateway
+	url = git@github.com:HamedGhoochanian/interview-gateway.git
+[submodule "interview-microservice"]
+	path = interview-microservice
+	url = git@github.com:HamedGhoochanian/interview-microservice.git
